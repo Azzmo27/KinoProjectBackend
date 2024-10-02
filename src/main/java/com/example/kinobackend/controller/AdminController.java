@@ -10,7 +10,6 @@ public class AdminController {
 
     @PostMapping("/create-showing")
     public ResponseEntity<String> createShowing(@RequestBody Showing showing) {
-        // Admin-only functionality to create new showings
         return ResponseEntity.ok("New showing created!");
     }
 }

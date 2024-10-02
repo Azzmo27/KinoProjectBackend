@@ -16,7 +16,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;  // Enum der repræsenterer brugerens rolle
+    private Role role;
 
     // Getters and setters
     public int getId() {

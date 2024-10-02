@@ -11,33 +11,32 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableMethodSecurity(prePostEnabled = true)  // Aktiver @PreAuthorize og @PostAuthorize
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/admin/**").hasRole("ADMIN")  // Kun ADMIN kan tilgå /admin/*
-                        .anyRequest().authenticated()  // Alle andre endpoints kræver login
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .permitAll()  // Tillader alle at bruge login-siden
+                        .permitAll()
                 )
                 .logout(logout -> logout
-                        .permitAll()  // Tillader alle at logge ud
+                        .permitAll()
                 );
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  // Til password hashing
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        // Returner din egen UserDetailsService-implementation, hvor brugere og roller hentes
         return new CustomUserDetailsService();
     }
 }

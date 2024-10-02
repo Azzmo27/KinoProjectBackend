@@ -28,10 +28,10 @@ public class ShowingService {
 
     public Showing updateShowing(int id, Showing updatedShowing) {
         if (showingRepository.existsById(id)) {
-            updatedShowing.setId(id); // Set the ID of the updated showing
+            updatedShowing.setId(id);
             return showingRepository.save(updatedShowing);
         }
-        return null; // Or throw an exception
+        return null;
     }
 
     public void deleteShowing(int id) {

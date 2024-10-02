@@ -12,8 +12,8 @@ public class Movie {
     private String movieTitle;
     private String genre;
     private int ageLimit;
-    private boolean is3D; // New field for 3D films
-    private int duration; // Duration in minutes
+    private boolean is3D;
+    private int duration;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Showing> showings;

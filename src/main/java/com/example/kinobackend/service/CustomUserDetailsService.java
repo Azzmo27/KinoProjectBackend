@@ -18,17 +18,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Find bruger baseret på username
+
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
 
-        // Byg et UserDetails-objekt ved at bruge brugerens username, password og rolle
+
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
-                Collections.singleton(user.getRole()) // Returner brugerens rolle som en samling
+                Collections.singleton(user.getRole())
         );
     }
 }

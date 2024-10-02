@@ -16,7 +16,7 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public List<Movie> getMoviesWithShowings() {
-        // Fetch all movies with their associated showings and seat availability
+
         return movieRepository.findAll();
     }
 
@@ -24,7 +24,7 @@ public class MovieService {
         LocalDateTime startDate = LocalDateTime.now();
         LocalDateTime endDate = startDate.plusMonths(3);
 
-        // Use the repository method to find movies within the date range
+
         return movieRepository.findMoviesWithinDateRange(startDate, endDate);
     }
     public List<Showing> getShowingsForMovie(int movieId) {

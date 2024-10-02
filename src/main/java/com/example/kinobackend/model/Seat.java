@@ -11,15 +11,15 @@ public class Seat {
     private int seatNumber;
     private boolean isSofa;
     private boolean isCowboy;
-    private boolean reserved; // Field to track if the seat is reserved
-    private boolean available; // New field to track if the seat is available
+    private boolean reserved;
+    private boolean available;
     private double priceAdjustment;
 
     // Constructors
     public Seat() {
-        // Default constructor
-        this.reserved = false; // Initialize reserved to false
-        this.available = true; // Initialize available to true
+
+        this.reserved = false;
+        this.available = true;
     }
 
     // Getters and setters
@@ -69,7 +69,7 @@ public class Seat {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved;
-        this.available = !reserved; // Update availability based on reservation status
+        this.available = !reserved;
     }
 
     public boolean isAvailable() {

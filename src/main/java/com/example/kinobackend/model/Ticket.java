@@ -22,11 +22,11 @@ public class Ticket {
     @JoinColumn(name = "seat", referencedColumnName = "id")
     private Seat seat;
 
-    private boolean is3D; // New field for 3D films
-    private boolean isLongFilm; // New field for films longer than 170 minutes
-    private String bookingReference; // Unique booking reference
+    private boolean is3D;
+    private boolean isLongFilm;
+    private String bookingReference;
 
-    // Constructors, getters, and setters...
+
 
     public boolean is3D() {
         return is3D;

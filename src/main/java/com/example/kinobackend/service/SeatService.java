@@ -32,31 +32,31 @@ public class SeatService {
 
             // Reserve the seat
             existingSeat.setReserved(true);
-            seatRepository.save(existingSeat); // Save the updated seat
+            seatRepository.save(existingSeat);
         }
     }
 
-    // Method to adjust reservations manually
+
     public void adjustReservation(int seatId, boolean reserve) {
         Seat seat = seatRepository.findById(seatId)
                 .orElseThrow(() -> new RuntimeException("Seat not found"));
 
         seat.setReserved(reserve);
-        seat.setAvailable(!reserve); // If reserved, it is not available
-        seatRepository.save(seat); // Save changes
+        seat.setAvailable(!reserve);
+        seatRepository.save(seat);
     }
 
-    // Method to get available seats for a showing
+
     public List<Seat> getAvailableSeatsForShowing(int showingId) {
         Showing showing = showingRepository.findById(showingId)
                 .orElseThrow(() -> new RuntimeException("Showing not found"));
 
-        // Get the seats for the specific showing
-        List<Seat> seats = showing.getSeats(); // Assuming you have a getSeats method in Showing
 
-        // Filter the available seats
+        List<Seat> seats = showing.getSeats();
+
+
         return seats.stream()
-                .filter(Seat::isAvailable) // Ensure only available seats are returned
+                .filter(Seat::isAvailable)
                 .collect(Collectors.toList());
     }
 }

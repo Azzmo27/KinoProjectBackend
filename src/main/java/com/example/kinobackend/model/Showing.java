@@ -73,7 +73,7 @@ public class Showing {
 
     public List<Seat> getAvailableSeats() {
         return seats.stream()
-                .filter(seat -> !seat.isReserved()) // Assuming you have a way to mark a seat as reserved
+                .filter(seat -> !seat.isReserved())
                 .collect(Collectors.toList());
     }
 

@@ -72,7 +72,7 @@ public class ReservationService {
             seat.setAvailable(false);
         }
 
-        // Save ticket to the database
+
         ticketRepository.save(ticket);
 
         return ticket;
