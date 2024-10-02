@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
-public class CostumerController {
+public class CustomerController {
 
     @Autowired
     private MovieService movieService;
@@ -21,7 +21,6 @@ public class CostumerController {
         List<Movie> movies = movieService.getMoviesWithShowings();
         return ResponseEntity.ok(movies);
     }
-
 
     @GetMapping("/upcoming")
     public ResponseEntity<List<Movie>> getUpcomingMovies() {

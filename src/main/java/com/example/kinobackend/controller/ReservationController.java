@@ -20,22 +20,19 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
-    // Endpoint to reserve tickets
     @PostMapping("/reserve")
     public ResponseEntity<Ticket> reserveTickets(@RequestBody ReservationRequest request) {
-        // Validate request input
+
         if (request.getSeats() == null || request.getSeats().isEmpty() || request.getShowing() == null || request.getCustomer() == null) {
-            return ResponseEntity.badRequest().build(); // Return bad request if input is invalid
+            return ResponseEntity.badRequest().build();
         }
 
-        // Extract details from the request
         Showing showing = request.getShowing();
         List<Seat> seats = request.getSeats();
         Customer customer = request.getCustomer();
 
-        // Reserve tickets
         Ticket ticket = reservationService.reserveTicket(showing, seats, customer);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(ticket); // Return the ticket with confirmation details
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticket);
     }
 }
