@@ -1,7 +1,6 @@
 package com.example.kinobackend.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -13,57 +12,37 @@ public class Movie {
     private String movieTitle;
     private String genre;
     private int ageLimit;
+    private boolean is3D; // New field for 3D films
+    private int duration; // Duration in minutes
 
-    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
-    private List<Showing> showing;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Showing> showings;
 
-    public Movie(){
-    }
-    public Movie(String movieTitle, String genre, int ageLimit, int id){
-        this.movieTitle = movieTitle;
-        this.genre = genre;
-        this.ageLimit = ageLimit;
-        this.id = id;
+    public Movie() {
     }
 
-    public int getId() {
-        return id;
+    // Getters and setters...
+
+    public boolean is3D() {
+        return is3D;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void set3D(boolean is3D) {
+        this.is3D = is3D;
     }
 
-    public String getMovieTitle() {
-        return movieTitle;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setMovieTitle(String movieTitle) {
-        this.movieTitle = movieTitle;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getAgeLimit() {
-        return ageLimit;
-    }
-
-    public void setAgeLimit(int ageLimit) {
-        this.ageLimit = ageLimit;
-    }
-
     public List<Showing> getShowings() {
-        return showing;
+        return showings;
     }
 
     public void setShowings(List<Showing> showings) {
-        this.showing = showings;
+        this.showings = showings;
     }
-
 }

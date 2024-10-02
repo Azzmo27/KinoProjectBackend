@@ -1,7 +1,6 @@
-package com.example.kinobackend.kinoRepository;
+package com.example.kinobackend.repository;
 
 import com.example.kinobackend.model.Showing;
-import jakarta.persistence.Entity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

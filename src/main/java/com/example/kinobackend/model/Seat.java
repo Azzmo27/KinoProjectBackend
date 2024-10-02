@@ -5,32 +5,43 @@ import jakarta.persistence.*;
 @Entity
 public class Seat {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String row;
     private int seatNumber;
     private boolean isSofa;
     private boolean isCowboy;
+    private boolean reserved; // Field to track if the seat is reserved
+    private boolean available; // New field to track if the seat is available
     private double priceAdjustment;
 
-    // @ManyToOne
-   // private Screening screening;
-    public int getId(){
+    // Constructors
+    public Seat() {
+        // Default constructor
+        this.reserved = false; // Initialize reserved to false
+        this.available = true; // Initialize available to true
+    }
+
+    // Getters and setters
+    public int getId() {
         return id;
     }
-public void setId(int id){
-   this.id = id;
-}
 
-public String getRow(){
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRow() {
         return row;
-}
-public void setRow(String row){
- this.row = row;
-}
-public int getSeatNumber(){
+    }
+
+    public void setRow(String row) {
+        this.row = row;
+    }
+
+    public int getSeatNumber() {
         return seatNumber;
-}
+    }
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
@@ -41,7 +52,7 @@ public int getSeatNumber(){
     }
 
     public void setSofa(boolean sofa) {
-       this.isSofa = sofa;
+        this.isSofa = sofa;
     }
 
     public boolean isCowboy() {
@@ -52,6 +63,23 @@ public int getSeatNumber(){
         this.isCowboy = cowboy;
     }
 
+    public boolean isReserved() {
+        return reserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
+        this.available = !reserved; // Update availability based on reservation status
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
     public double getPriceAdjustment() {
         return priceAdjustment;
     }
@@ -59,10 +87,4 @@ public int getSeatNumber(){
     public void setPriceAdjustment(double priceAdjustment) {
         this.priceAdjustment = priceAdjustment;
     }
-   // public Screening getScreening() {
-  //      return screening;
-  //  }
-
- //   public void setScreening(Screening screening) {
-  //      this.screening = screening;
-    }
+}

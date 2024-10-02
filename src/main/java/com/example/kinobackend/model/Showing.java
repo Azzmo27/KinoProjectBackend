@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "showing")
@@ -68,6 +69,12 @@ public class Showing {
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public List<Seat> getAvailableSeats() {
+        return seats.stream()
+                .filter(seat -> !seat.isReserved()) // Assuming you have a way to mark a seat as reserved
+                .collect(Collectors.toList());
     }
 
 
