@@ -15,7 +15,8 @@ public class Showing {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id", referencedColumnName = "id")
+
     private Movie movie;
 
     private LocalDateTime showingTime;

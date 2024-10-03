@@ -15,6 +15,10 @@ public class Seat {
     private boolean available;
     private double priceAdjustment;
 
+
+   @ManyToOne
+   @JoinColumn(name = "showing", referencedColumnName = "id")
+   private Showing showing;
     // Constructors
     public Seat() {
 

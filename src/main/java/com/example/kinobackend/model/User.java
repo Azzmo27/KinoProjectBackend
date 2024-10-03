@@ -1,7 +1,6 @@
 package com.example.kinobackend.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "users")
