@@ -17,16 +17,16 @@ public class Seat {
 
 
    @ManyToOne
-   @JoinColumn(name = "showing", referencedColumnName = "id")
+   @JoinColumn(name = "showing_id")
    private Showing showing;
-    // Constructors
+
     public Seat() {
 
         this.reserved = false;
         this.available = true;
     }
 
-    // Getters and setters
+
     public int getId() {
         return id;
     }

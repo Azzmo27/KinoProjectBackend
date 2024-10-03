@@ -19,7 +19,6 @@ public class SeatService {
     @Autowired
     private ShowingRepository showingRepository;
 
-
     public void reserveSeats(List<Seat> seats) {
         for (Seat seat : seats) {
             Seat existingSeat = seatRepository.findById(seat.getId())
@@ -30,7 +29,6 @@ public class SeatService {
                 throw new RuntimeException("Seat " + existingSeat.getId() + " is already reserved.");
             }
 
-            // Reserve the seat
             existingSeat.setReserved(true);
             seatRepository.save(existingSeat);
         }
@@ -50,7 +48,6 @@ public class SeatService {
     public List<Seat> getAvailableSeatsForShowing(int showingId) {
         Showing showing = showingRepository.findById(showingId)
                 .orElseThrow(() -> new RuntimeException("Showing not found"));
-
 
         List<Seat> seats = showing.getSeats();
 

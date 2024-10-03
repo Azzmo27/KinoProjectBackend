@@ -68,16 +68,16 @@ public class Showing {
         return seats;
     }
 
-    public void setSeats(List<Seat> seats) {
+    public void setSeats(List<Seat> showings) {
         this.seats = seats;
     }
 
-    public List<Seat> getAvailableSeats() {
+     public List<Seat> getAvailableSeats() {
         return seats.stream()
-                .filter(seat -> !seat.isReserved())
-                .collect(Collectors.toList());
+                 .filter(seat -> !seat.isReserved())
+                  .collect(Collectors.toList());
     }
-
-
 }
+
+
 
