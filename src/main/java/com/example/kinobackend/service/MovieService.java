@@ -4,6 +4,7 @@ import com.example.kinobackend.model.Movie;
 import com.example.kinobackend.model.Showing;
 import com.example.kinobackend.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,10 @@ public class MovieService {
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
 
     public List<Movie> getMoviesWithShowings() {
 
@@ -48,4 +53,15 @@ public class MovieService {
         public void deleteMovie(int id) {
             movieRepository.deleteById(id);
         }
+
+    public void insertInitialData() {
+        String sql1 = "INSERT INTO showing (movie_title, show_time) VALUES (?, ?)";
+        String sql2 = "INSERT INTO showing (movie_title, show_time) VALUES (?, ?)";
+
+        // Insert the first showing
+        jdbcTemplate.update(sql1, "Inception", "2024-10-10 18:00:00");
+
+        // Insert the second showing
+        jdbcTemplate.update(sql2, "Avatar", "2024-10-11 20:00:00");
+    }
 }
