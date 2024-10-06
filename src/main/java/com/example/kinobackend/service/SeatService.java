@@ -4,7 +4,9 @@ import com.example.kinobackend.model.Seat;
 import com.example.kinobackend.model.Showing;
 import com.example.kinobackend.repository.SeatRepository;
 import com.example.kinobackend.repository.ShowingRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,14 @@ public class SeatService {
 
     @Autowired
     private ShowingRepository showingRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @PostConstruct
+    public void init(){
+        insertInitialData();
+    }
 
     public void reserveSeats(List<Seat> seats) {
         for (Seat seat : seats) {

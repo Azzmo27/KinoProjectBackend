@@ -19,7 +19,9 @@ public class Customer {
     @Column(unique = true)
     private String userName;
     private String password;
+    @Enumerated(EnumType.STRING)
     private Role role;
+
 
     @OneToMany(mappedBy = "customer")
     @JsonBackReference

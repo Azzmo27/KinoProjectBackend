@@ -59,13 +59,16 @@ public class MovieService {
         }
 
     public void insertInitialData() {
-        System.out.println("initial data is here");
+        System.out.println("Initializing test data...");
 
-        String sql1 = "INSERT INTO showing (showing_time, theater_number) VALUES (?, ?)";
-        String sql2 = "INSERT INTO showing (showing_time, theater_number) VALUES (?, ?)";
-        jdbcTemplate.update(sql1, "2024-10-10 18:00:00", 3);
+        String sql1 = "INSERT INTO movie (movie_title, genre, age_limit, is3d, duration) VALUES (?, ?, ?, ?, ?)";
+        String sql2 = "INSERT INTO movie (movie_title, genre, age_limit, is3d, duration) VALUES (?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql2,  "2024-10-11 20:00:00", 4);
 
+        jdbcTemplate.update(sql1, "Cinderella", "Fairy tale", 5, false, 120);
+        jdbcTemplate.update(sql2, "Fast and Furious", "Action", 13, true, 130);
+
+        System.out.println("Test data inserted successfully.");
     }
+
 }

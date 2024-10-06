@@ -7,7 +7,7 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Seatrow;
+    private String SeatRow;
     private int seatNumber;
     private boolean isSofa;
     private boolean isCowboy;
@@ -39,8 +39,8 @@ public class Seat {
         return Seatrow;
     }
 
-    public void setRow(String row) {
-        this.Seatrow = row;
+    public void setRow(String SeatRow) {
+        this.SeatRow = SeatRow;
     }
 
     public int getSeatNumber() {
