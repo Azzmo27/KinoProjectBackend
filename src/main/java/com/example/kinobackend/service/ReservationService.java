@@ -97,4 +97,14 @@ public class ReservationService {
             return 10.00;
         }
     }
+    public void insertInitialData() {
+        System.out.println("initial data is here");
+
+        String sql1 = "INSERT INTO reservation (confirmation_code, number_of_tickets, total_price, showing_id ) VALUES (?, ?, ?, ?)";
+        String sql2 = "INSERT INTO reservation (confirmation_code, number_of_tickets, total_price, showing_id) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql1, "CONF1234", 3,100.0,1 );
+
+        jdbcTemplate.update(sql2,  "CONF5678", 4, 200.0, 2);
+
+    }
 }

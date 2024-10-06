@@ -36,7 +36,7 @@ public class Seat {
     }
 
     public String getSeatRow() {
-        return Seatrow;
+        return SeatRow;
     }
 
     public void setRow(String SeatRow) {
