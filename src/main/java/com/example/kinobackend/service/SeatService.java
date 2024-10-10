@@ -24,10 +24,7 @@ public class SeatService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @PostConstruct
-    public void init(){
-        insertInitialData();
-    }
+
 
     public void reserveSeats(List<Seat> seats) {
         for (Seat seat : seats) {
@@ -67,16 +64,5 @@ public class SeatService {
                 .collect(Collectors.toList());
     }
 
-    public void insertInitialData() {
-        System.out.println("Initializing test data...");
 
-        String sql1 = "INSERT INTO seat (seat_row, available, is_cowboy, is_sofa, price_adjustment, reserved, seat_number, showing_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        String sql2 = "INSERT INTO seat (seat_row, available, is_cowboy, is_sofa, price_adjustment, reserved, seat_number, showing_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-
-        jdbcTemplate.update(sql1, "A", true, false, false, 0.0, false, 1, 1);
-        jdbcTemplate.update(sql2, "B", true, true, false, 10.0, false, 2, 1);
-
-        System.out.println("Test data inserted successfully.");
-    }
 }
