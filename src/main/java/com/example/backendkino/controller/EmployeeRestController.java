@@ -44,7 +44,7 @@ public class EmployeeRestController {
         }
     }
 
-    @GetMapping("/check-session")
+    @GetMapping("/check-employee-session")
     public ResponseEntity<String> verifyEmployeeSession(HttpSession session) {
         if (session.getAttribute("employee") != null) {
             return ResponseEntity.ok("Employee session is active.");

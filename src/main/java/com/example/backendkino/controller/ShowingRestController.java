@@ -51,8 +51,8 @@ public class ShowingRestController {
         return cinemaHallRepository.findAll();
     }
 
-    @GetMapping("/admins")
-    public List<Employee> fetchAllAdmins() {
+    @GetMapping("/employees")
+    public List<Employee> fetchAllEmployees() {
         return employeeRepository.findAll();
     }
 
