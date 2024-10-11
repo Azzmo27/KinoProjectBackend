@@ -5,7 +5,9 @@ import com.example.kinobackend.model.Seat;
 import com.example.kinobackend.model.Showing;
 import com.example.kinobackend.model.Ticket;
 import com.example.kinobackend.repository.TicketRepository; // Import your repository
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,10 @@ public class ReservationService {
     public ReservationService(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;
     }
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
 
     @Transactional
     public Ticket reserveTicket(Showing showing, List<Seat> seats, Customer customer) {
@@ -88,4 +94,5 @@ public class ReservationService {
             return 10.00;
         }
     }
+
 }

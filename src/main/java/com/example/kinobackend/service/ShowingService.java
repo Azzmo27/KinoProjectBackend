@@ -2,7 +2,9 @@ package com.example.kinobackend.service;
 
 import com.example.kinobackend.model.Showing;
 import com.example.kinobackend.repository.ShowingRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,11 @@ public class ShowingService {
 
     @Autowired
     private ShowingRepository showingRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+
 
     public List<Showing> getAllShowings() {
         return showingRepository.findAll();
@@ -38,6 +45,8 @@ public class ShowingService {
         if (showingRepository.existsById(id)) {
             showingRepository.deleteById(id);
         }
+    }
 
     }
-}
+
+

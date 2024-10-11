@@ -7,7 +7,7 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String row;
+    private String SeatRow;
     private int seatNumber;
     private boolean isSofa;
     private boolean isCowboy;
@@ -15,14 +15,18 @@ public class Seat {
     private boolean available;
     private double priceAdjustment;
 
-    // Constructors
+
+   @ManyToOne
+   @JoinColumn(name = "showing_id")
+   private Showing showing;
+
     public Seat() {
 
         this.reserved = false;
         this.available = true;
     }
 
-    // Getters and setters
+
     public int getId() {
         return id;
     }
@@ -31,12 +35,12 @@ public class Seat {
         this.id = id;
     }
 
-    public String getRow() {
-        return row;
+    public String getSeatRow() {
+        return SeatRow;
     }
 
-    public void setRow(String row) {
-        this.row = row;
+    public void setRow(String SeatRow) {
+        this.SeatRow = SeatRow;
     }
 
     public int getSeatNumber() {
